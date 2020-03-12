@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace EnglishStudyProgram {
 	class BookInfo {
-		public int BookID { get; set; }
+		public string BookTitle { get; set; }
+		public string BookAuthor { get; set; }
 		public string KeyInfo { get; set; }
 		public List<string> InfoList { get; set; }
 
-		public BookInfo(int bookID, string keyInfo, List<string> infoList) {
-			BookID = bookID;
+		public BookInfo(string bookTitle, string bookAuthor, string keyInfo, List<string> infoList) {
+			BookTitle = bookTitle;
+			BookAuthor = bookAuthor;
 			KeyInfo = keyInfo;
 			InfoList = infoList;
 		}
@@ -22,8 +24,8 @@ namespace EnglishStudyProgram {
 			TestContent = new List<BookInfo>();
 		}
 
-		public void AddTestContent(int bookID, string keyInfo, List<string> infoList) {
-			BookInfo bookInfo = new BookInfo(bookID, keyInfo, infoList);
+		public void AddTestContent(string bookTitle, string bookAuthor, string keyInfo, List<string> infoList) {
+			BookInfo bookInfo = new BookInfo(bookTitle, bookAuthor, keyInfo, infoList);
 			TestContent.Add(bookInfo);
 		}
 
@@ -37,6 +39,10 @@ namespace EnglishStudyProgram {
 				Console.WriteLine("Tried to access an index out of range: index=" + index);
 			}
 			return bookInfo;
+		}
+
+		public void SortByTitle() {
+			TestContent = TestContent.OrderBy(o => o.BookTitle).ToList();
 		}
 
 	}
