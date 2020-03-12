@@ -17,6 +17,12 @@ namespace EnglishStudyProgram {
 			KeyInfo = keyInfo;
 			InfoList = infoList;
 		}
+		public BookInfo() {
+			BookTitle = "";
+			BookAuthor = "";
+			KeyInfo = "";
+			InfoList = new List<string>();
+		}
 	}
 	class BookTestContent {
 		public List<BookInfo> TestContent { get; set; }

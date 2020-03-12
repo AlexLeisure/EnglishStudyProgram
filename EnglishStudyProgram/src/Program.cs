@@ -145,35 +145,43 @@ namespace EnglishStudyProgram {
 			Program program = new Program(1);
 
 			BookTestContent testContent = new BookTestContent();
-			List<string> infoList = new List<string>();
-			infoList.Add("First bullet point");
-			infoList.Add("Second bullet point");
-			infoList.Add("Third bullet point");
-			testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test question", infoList);
-			testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test2 question", infoList);
-			testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test3 question", infoList);
-			testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test4 question", infoList);
 
-			testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test question", infoList);
-			testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test2 question", infoList);
-			testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test3 question", infoList);
-			testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test4 question", infoList);
+			Console.WriteLine("Input a file name (no extension): ");
+			Console.Write(">");
+			string readFileName = Console.ReadLine();
+			testContent = program.LoadFromFile("../../json/" + readFileName + ".json");
 
-			testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test question", infoList);
-			testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test2 question", infoList);
-			testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test3 question", infoList);
-			testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test4 question", infoList);
+			/*
+				List<string> infoList = new List<string>();
+				infoList.Add("First bullet point");
+				infoList.Add("Second bullet point");
+				infoList.Add("Third bullet point");
+				testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test question", infoList);
+				testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test2 question", infoList);
+				testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test3 question", infoList);
+				testContent.AddTestContent(program.books[0].title, program.books[0].author, "This is a test4 question", infoList);
 
-			testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test question", infoList);
-			testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test2 question", infoList);
-			testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test3 question", infoList);
-			testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test4 question", infoList);
+				testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test question", infoList);
+				testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test2 question", infoList);
+				testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test3 question", infoList);
+				testContent.AddTestContent(program.books[1].title, program.books[1].author, "This is a test4 question", infoList);
+
+				testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test question", infoList);
+				testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test2 question", infoList);
+				testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test3 question", infoList);
+				testContent.AddTestContent(program.books[2].title, program.books[2].author, "This is a test4 question", infoList);
+
+				testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test question", infoList);
+				testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test2 question", infoList);
+				testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test3 question", infoList);
+				testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test4 question", infoList);
+			*/
 
 			program.MainProgram(testContent);
 			Console.WriteLine("Input a file name (no extension): ");
 			Console.Write(">");
-			string fileName = Console.ReadLine();
-			program.SaveToJson(testContent, "../../json/" + fileName + ".json");
+			string writeFileName = Console.ReadLine();
+			program.SaveToJson(testContent, "../../json/" + writeFileName + ".json");
 		}
 
 	}
