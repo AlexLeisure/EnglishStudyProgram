@@ -9,11 +9,36 @@ namespace EnglishStudyProgram {
 
 	class Program {
 		static void Main(string[] args) {
-			Console.Write("Press anything to start program:");
-			Console.Read();
-			TestMenu();
-			Console.Write("Press anything to exit...");
-			Console.Read();
+			MainProgram();
+			Console.ReadKey();
+		}
+
+		static void MainProgram() {
+			string input = "";
+			bool quit = false;
+			List<BookTestContent> testList = new List<BookTestContent>();
+			do {
+				Console.WriteLine("\n1. Add test content\n2. Print test content\n3. Quit");
+				Console.Write("Enter 1-3:");
+				
+				input = Console.ReadLine();
+
+				switch(input) {
+					case "1":
+						Console.WriteLine("TODO");
+						break;
+					case "2":
+						Console.WriteLine("TODO");
+						break;
+					case "3":
+						quit = true;
+						break;
+					default:
+						Console.WriteLine("Invalid input...");
+						break;
+				}
+				
+			} while(!quit);
 		}
 
 		static void TestMenu() {
