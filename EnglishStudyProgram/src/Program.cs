@@ -120,6 +120,27 @@ namespace EnglishStudyProgram {
 
 		}
 
+		public BookTestContent LoadFromFile(string file) {
+			BookTestContent btc = null;
+			try {
+				string json = System.IO.File.ReadAllText(file);
+				btc = JsonSerializer.Deserialize<BookTestContent>(json);
+				return btc;
+			} catch(System.IO.FileNotFoundException) {
+				Console.WriteLine("File does not exist...");
+			}
+			return btc;
+		}
+
+		public void SaveToJson(BookTestContent testContent, string fileName) {
+			var options = new JsonSerializerOptions {
+				WriteIndented = true,
+			};
+			string jsonString = JsonSerializer.Serialize(testContent, options);
+			Console.WriteLine("Saving to file...");
+			System.IO.File.WriteAllText(fileName, jsonString);
+		}
+
 		static void Main(string[] args) {
 			Program program = new Program(1);
 
@@ -149,6 +170,10 @@ namespace EnglishStudyProgram {
 			testContent.AddTestContent(program.books[3].title, program.books[3].author, "This is a test4 question", infoList);
 
 			program.MainProgram(testContent);
+			Console.WriteLine("Input a file name (no extension): ");
+			Console.Write(">");
+			string fileName = Console.ReadLine();
+			program.SaveToJson(testContent, "../../json/" + fileName + ".json");
 		}
 
 	}
